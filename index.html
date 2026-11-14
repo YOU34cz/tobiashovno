@@ -18,6 +18,70 @@
  --lime:#b8ff35;
 }
 
+.tobix-counter {
+ margin-top:35px;
+ display:inline-block;
+ background:#28150f;
+ color:#ffca1a;
+ padding:20px 28px;
+ border:3px solid #28150f;
+ box-shadow:7px 7px 0 #ed3026;
+ transform:rotate(-2deg);
+ text-align:center;
+}
+
+.counter-label {
+ font-family:'Archivo Black',sans-serif;
+ font-size:17px;
+}
+
+.counter-number {
+ font-family:'Archivo Black',sans-serif;
+ font-size:clamp(55px,8vw,90px);
+ line-height:1.1;
+ color:#ff77b7;
+ text-shadow:4px 4px #ed3026;
+}
+
+.counter-sub {
+ font-size:9px;
+ letter-spacing:2px;
+}
+
+#godImage {
+ cursor:pointer;
+ width:100%;
+ max-width:480px;
+ margin:auto;
+}
+
+#tobixImage {
+ display:block;
+ width:100%;
+ height:420px;
+ object-fit:contain;
+ background:#fff3d5;
+ transition:transform .2s,opacity .2s;
+}
+
+#godImage:active #tobixImage {
+ transform:scale(.96) rotate(2deg);
+}
+
+#godImage.clicked {
+ animation:tobixPop .35s ease;
+}
+
+@keyframes tobixPop {
+ 50% {transform:scale(1.04) rotate(-2deg)}
+}
+
+@media(max-width:720px) {
+ #tobixImage {
+  height:320px;
+ }
+}
+
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
@@ -362,6 +426,36 @@ footer{
   This website has no nutritional value and neither does this paragraph.
  </p>
 </section>
+
+ 
+<section class="section god" id="god">
+ <div class="reveal">
+  <div class="tag">01 / The divine cheeseburger</div>
+  <h2>OUR<br><span>GOD.</span></h2>
+
+  <p>
+   This is our god. Every day we gather, bow our heads and pray
+   to the sacred image. May the holy burger bless our buns.
+  </p>
+
+  <div class="prayer">🙏 DAILY PRAYER — EXTRA CHEESE 🙏</div>
+
+  <div class="tobix-counter">
+   <div class="counter-label">TOBIX COUNTER™</div>
+   <div class="counter-number" id="tobixCount">0</div>
+   <div class="counter-sub">HOLY CLICKS REGISTERED</div>
+  </div>
+ </div>
+
+ <div class="god-img reveal" id="godImage">
+  <img id="tobixImage"
+   src="https://i.imgur.com/iIq0Vlo.png"
+   alt="The sacred image">
+  <div class="caption">CLICK THE GOD ✦</div>
+ </div>
+</section>
+
+ 
 </main>
 
 <footer>
@@ -399,6 +493,82 @@ document.querySelectorAll('.sticker').forEach(el=>{
   el.style.animation='';
  });
 });
+
+ 
+const cursor = document.querySelector('#cursor');
+
+if (matchMedia('(pointer:fine)').matches) {
+ window.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+ });
+}
+
+// ALL TOBIX IMAGES
+const tobixImages = [
+ 'https://i.imgur.com/iIq0Vlo.png',
+ 'https://imgur.com/a/mEka0aZ',
+ 'https://imgur.com/a/RDXcXY6',
+ 'https://imgur.com/a/zJOeiGT',
+ 'https://imgur.com/a/XI0PwuU'
+];
+
+// Counter persistence
+let tobixCount = Number(
+ localStorage.getItem('tobixCounter') || 0
+);
+
+const countElement = document.querySelector('#tobixCount');
+const imageElement = document.querySelector('#tobixImage');
+const imageContainer = document.querySelector('#godImage');
+
+countElement.textContent = tobixCount;
+
+// Use direct image URLs here.
+// Imgur album links are not direct image files, so resolve their
+// individual image URLs from the albums before using them.
+const directImages = [
+ 'https://i.imgur.com/iIq0Vlo.png'
+];
+
+imageContainer.addEventListener('click', () => {
+ tobixCount++;
+
+ localStorage.setItem('tobixCounter', tobixCount);
+ countElement.textContent = tobixCount;
+
+ let nextImage;
+
+ do {
+  nextImage = directImages[
+   Math.floor(Math.random() * directImages.length)
+  ];
+ } while (
+  directImages.length > 1 &&
+  nextImage === imageElement.src
+ );
+
+ imageElement.src = nextImage;
+
+ imageContainer.classList.remove('clicked');
+ void imageContainer.offsetWidth;
+ imageContainer.classList.add('clicked');
+});
+
+// Scroll animations
+const io = new IntersectionObserver(entries => {
+ entries.forEach(entry => {
+  if (entry.isIntersecting) {
+   entry.target.classList.add('show');
+   io.unobserve(entry.target);
+  }
+ });
+}, { threshold: .12 });
+
+document.querySelectorAll('.reveal').forEach(el => {
+ io.observe(el);
+});
+
 </script>
 </body>
 </html>
