@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#b8ff32">
+<title>TOBIAS HOVNO® — Digital Chaos</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap');
+:root{--acid:#b8ff32;--ink:#10100f;--paper:#f4f1e8;--pink:#ff4db8;--purple:#8d65ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--acid);color:var(--ink);font-family:'Space Mono',monospace;overflow-x:hidden;cursor:crosshair}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:20;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E")}
+a{color:inherit;text-decoration:none}.topbar{display:flex;justify-content:space-between;align-items:center;padding:20px 4vw;border-bottom:2px solid var(--ink);font-size:11px;font-weight:bold;letter-spacing:.08em;text-transform:uppercase}.status{display:flex;align-items:center;gap:9px}.dot{width:9px;height:9px;border-radius:50%;background:#ff4d4d;box-shadow:0 0 12px #ff4d4d;animation:pulse 1.2s infinite}
+.hero{min-height:calc(100svh - 60px);position:relative;padding:7vh 4vw 5vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.kicker{font-size:clamp(10px,1vw,14px);font-weight:bold;letter-spacing:.18em;text-transform:uppercase;display:flex;align-items:center;gap:12px;z-index:2}.kicker:before{content:"";height:2px;width:36px;background:var(--ink)}
+h1{font-family:'Archivo Black',Impact,sans-serif;font-size:clamp(5rem,17.5vw,17rem);line-height:.73;letter-spacing:-.095em;text-transform:uppercase;margin:5vh 0 3vh;position:relative;z-index:2;max-width:1200px}
+h1 span{display:block;white-space:nowrap}h1 .second{color:var(--paper);-webkit-text-stroke:2px var(--ink);text-shadow:9px 9px 0 var(--purple);transform:rotate(-2deg);transform-origin:left center}
+.hero-bottom{display:flex;justify-content:space-between;align-items:end;gap:30px;z-index:2;margin-top:5vh}.intro{font-size:clamp(12px,1.3vw,16px);line-height:1.7;max-width:340px}.enter{background:var(--ink);color:var(--acid);padding:18px 28px;border:2px solid var(--ink);font-family:'Archivo Black',sans-serif;font-size:clamp(18px,2vw,26px);text-transform:uppercase;display:inline-flex;align-items:center;gap:22px;box-shadow:7px 7px 0 var(--paper);transition:.2s;cursor:pointer}.enter:hover{transform:translate(5px,5px) rotate(-2deg);box-shadow:2px 2px 0 var(--paper);background:var(--purple);color:white}.enter b{font-size:30px;line-height:15px}
+.sticker{position:absolute;font-family:'Archivo Black',sans-serif;text-transform:uppercase;display:grid;place-items:center;text-align:center;z-index:1;user-select:none}.sticker.star{width:clamp(100px,15vw,210px);aspect-ratio:1;background:var(--pink);clip-path:polygon(50% 0%,61% 34%,98% 20%,75% 50%,100% 80%,63% 68%,50% 100%,38% 67%,0 80%,25% 50%,2% 20%,39% 34%);font-size:clamp(14px,2vw,25px);right:9%;top:12%;transform:rotate(14deg);animation:spin 22s linear infinite}.sticker.burst{width:120px;height:120px;border-radius:50%;background:var(--purple);color:white;font-size:13px;right:19%;bottom:17%;transform:rotate(-12deg);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);animation:bob 3s ease-in-out infinite}
+.marquee{background:var(--ink);color:var(--acid);padding:17px 0;overflow:hidden;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);white-space:nowrap;font-family:'Archivo Black',sans-serif;font-size:clamp(20px,3vw,38px);text-transform:uppercase}.marquee-track{display:inline-block;animation:marquee 24s linear infinite}.marquee span{padding:0 28px}.marquee em{color:var(--pink);font-style:normal}
+.about{background:var(--paper);padding:12vh 8vw;display:grid;grid-template-columns:1fr 1.2fr;gap:8vw;position:relative}.section-tag{font-size:11px;letter-spacing:.16em;text-transform:uppercase}.about h2,.manifesto h2{font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:clamp(44px,8vw,110px);line-height:.86;letter-spacing:-.07em;margin:25px 0}.about-copy{font-size:clamp(14px,1.5vw,19px);line-height:1.8;max-width:620px}.about-copy strong{background:var(--acid);padding:0 5px}.big-number{font-family:'Archivo Black',sans-serif;font-size:clamp(100px,20vw,260px);line-height:.8;color:var(--purple);-webkit-text-stroke:2px var(--ink);transform:rotate(-8deg);margin-top:40px}
+.manifesto{background:var(--purple);color:white;padding:12vh 8vw;position:relative;overflow:hidden}.manifesto h2{font-size:clamp(55px,11vw,150px);max-width:1100px}.manifesto p{font-size:13px;max-width:440px;line-height:1.8}.cross{position:absolute;right:7vw;top:15%;font-size:clamp(100px,20vw,260px);font-family:Arial;font-weight:900;color:var(--acid);transform:rotate(15deg);text-shadow:9px 9px var(--ink)}
+footer{background:var(--ink);color:var(--paper);padding:35px 4vw;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:10px;text-transform:uppercase;letter-spacing:.1em}footer a{color:var(--acid)}.reveal{opacity:0;transform:translateY(35px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}.reveal.visible{opacity:1;transform:translateY(0)}
+#cursor{position:fixed;top:0;left:0;width:18px;height:18px;border:2px solid var(--ink);border-radius:50%;pointer-events:none;z-index:30;transform:translate(-50%,-50%);mix-blend-mode:difference;transition:width .2s,height .2s}
+@keyframes pulse{50%{opacity:.3;transform:scale(.7)}}@keyframes spin{to{transform:rotate(374deg)}}@keyframes bob{50%{translate:0 -18px;rotate:5deg}}@keyframes marquee{to{transform:translateX(-50%)}}
+@media(max-width:700px){.topbar{padding:15px 5vw}.hero{padding:8vh 5vw 6vh;min-height:90svh}h1{font-size:clamp(4.3rem,19vw,8rem);margin:7vh 0}.sticker.star{right:5%;top:9%}.sticker.burst{right:8%;bottom:21%;width:85px;height:85px;font-size:10px}.hero-bottom{align-items:flex-start;flex-direction:column}.about{grid-template-columns:1fr;padding:10vh 7vw;gap:25px}.about h2{margin:15px 0}.big-number{font-size:42vw}.cross{right:4vw;top:4%}.manifesto{padding:10vh 7vw}footer{padding:25px 5vw}#cursor{display:none}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div id="cursor"></div>
+<header class="topbar"><a href="#">TH® / INTERNET PERSONALITY</a><div class="status"><i class="dot"></i> ONLINE(ISH)</div><div>EST. ??? — STILL HERE</div></header>
+<main>
+<section class="hero">
+ <div class="kicker">Welcome to the questionable universe</div>
+ <div class="sticker star">100%<br>UNNECESSARY</div>
+ <div class="sticker burst">NO<br>REFUNDS<br>↗</div>
+ <h1><span>TOBIAS</span><span class="second">HOVNO.</span></h1>
+ <div class="hero-bottom">
+  <p class="intro">Not a portfolio. Not a warning.<br>Just <strong>THE DIGITAL CHAOS.</strong><br>Proceed with absolutely no expectations.</p>
+  <a class="enter" href="#about">ENTER THE CHAOS <b>↘</b></a>
+ </div>
+</section>
+<div class="marquee"><div class="marquee-track"><span>NO THOUGHTS</span><em>✳</em><span>JUST VIBES</span><em>✳</em><span>PURE DIGITAL CHAOS</span><em>✳</em><span>NO THOUGHTS</span><em>✳</em><span>JUST VIBES</span><em>✳</em><span>PURE DIGITAL CHAOS</span><em>✳</em></div></div>
+<section class="about" id="about">
+ <div class="reveal"><div class="section-tag">01 / The situation</div><h2>WHO<br>EVEN<br>IS THIS?</h2><div class="big-number">TH!</div></div>
+ <div class="about-copy reveal"><p>Some websites tell you who they are. This one makes <strong>absolutely no promises.</strong></p><p>Welcome to the official digital corner of Tobias Hovno. A tiny corner of the internet with oversized energy, questionable decisions and a design that refuses to sit still.</p><p>Look around. Click things. Touch grass afterwards.</p></div>
+</section>
+<section class="manifesto">
+ <div class="cross">✳</div><div class="section-tag reveal">02 / The manifesto</div><h2 class="reveal">LESS<br>LOGIC.<br>MORE<br>CHAOS.</h2><p class="reveal">The internet was supposed to be weird. So here's a little reminder. Made to be loud, built to be silly, and absolutely not designed to blend in.</p>
+</section>
+</main>
+<footer><span>© 2026 TOBIAS HOVNO®</span><span>MADE OF PIXELS & BAD IDEAS</span><a href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">BACK TO TOP ↑</a></footer>
+<script>
+const cursor=document.getElementById('cursor');
+if(matchMedia('(pointer:fine)').matches){window.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px'});document.querySelectorAll('a').forEach(a=>{a.addEventListener('mouseenter',()=>{cursor.style.width='42px';cursor.style.height='42px'});a.addEventListener('mouseleave',()=>{cursor.style.width='18px';cursor.style.height='18px'})})}
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+document.querySelectorAll('.sticker').forEach((el,i)=>{el.addEventListener('mousemove',e=>{const r=el.getBoundingClientRect(),x=(e.clientX-r.left-r.width/2)/r.width,y=(e.clientY-r.top-r.height/2)/r.height;el.style.transform=`translate(${x*12}px,${y*12}px) rotate(${i? -12:14}deg)`});el.addEventListener('mouseleave',()=>el.style.transform='')});
+</script>
+</body></html>
